@@ -1,0 +1,14 @@
+﻿<h1 class="mb-3">Upload Blob</h1>
+
+<a class="btn btn-outline-secondary btn-sm mb-3"
+   asp-controller="AzureBlobs"
+   asp-action="Index">Back to Index</a>
+
+<form method="post" enctype="multipart/form-data" class="card p-3 shadow-sm">
+    <div class="mb-3">
+        <label for="file" class="form-label">Select file to upload:</label>
+        <input type="hidden" name="containername" value="@ViewData["CONTAINER"]" />
+        <input type="file" id="file" name="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
