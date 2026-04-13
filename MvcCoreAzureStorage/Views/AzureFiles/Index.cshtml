@@ -1,0 +1,33 @@
+﻿@model List<string>
+<h1>Azure Storage Files</h1>
+<a class="btn btn-warning"
+asp-controller="AzureFiles"
+   asp-action="UploadFile">
+    Upload Azure File
+</a>
+@if (Model != null)
+{
+    <ul>
+        @foreach (var file in Model)
+        {
+            <li>
+            <a class="btn btn-info"
+               asp-controller="AzureFiles"
+                   asp-action="ReadFile"
+                   asp-route-fileName="@file">
+                Read @file
+            </a>
+                <a class="btn btn-danger"
+                   asp-controller="AzureFiles"
+                   asp-action="DeleteFile"
+                   asp-route-fileName="@file">
+                    Delete @file
+                </a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No files found in azure</p>
+}
