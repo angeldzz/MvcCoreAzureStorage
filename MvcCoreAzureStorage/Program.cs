@@ -1,3 +1,4 @@
+using Azure.Data.Tables;
 using Azure.Storage.Blobs;
 using MvcCoreAzureStorage.Services;
 
@@ -9,6 +10,13 @@ string azureKeys = builder.Configuration.GetValue<string>
 BlobServiceClient blobServiceClient = new BlobServiceClient(azureKeys);
 builder.Services.AddTransient<BlobServiceClient>
     (x => blobServiceClient);
+
+TableServiceClient tableClient = 
+    new TableServiceClient(azureKeys);
+builder.Services.AddTransient<TableServiceClient>
+    (x => tableClient);
+
+builder.Services.AddTransient<ServiceStorageTables>();
 builder.Services.AddTransient<ServiceStorageFiles>();
 builder.Services.AddTransient<ServiceStorageBlobs>();
 builder.Services.AddControllersWithViews();
